@@ -1,32 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<div id="app">
+    <header class="header">
+        <router-link to="/">
+            <img src="./assets/logo.png" alt="Logo de rick and morty" class="header__img">
+        </router-link>
+    </header>
+    <router-view></router-view>
+</div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+    background-image: url('https://www.xtrafondos.com/wallpapers/rick-y-morty-en-otra-dimension-8735.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
-#nav {
-  padding: 30px;
+.header {
+    width: 100%;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.header img {
+    width: 300px;
+    margin: 25px;
 }
 </style>
