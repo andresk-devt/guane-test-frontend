@@ -19,7 +19,18 @@
                 <b-card-body>
                     <b-card-text>
                         <p>Location: <span>{{this.$store.getters.idPersonaje.location.name}}</span></p>
-                        <p>Staus: <span>{{this.$store.getters.idPersonaje.status}}</span></p>
+                        <p 
+                        v-if="this.$store.getters.idPersonaje.status == 'Alive'">
+                            Status: {{this.$store.getters.idPersonaje.status}} 💚
+                        </p>
+                        <p 
+                        v-else-if="this.$store.getters.idPersonaje.status == 'Dead'">
+                            Status: {{this.$store.getters.idPersonaje.status}} 💀
+                        </p>
+                          <p 
+                        v-else-if="this.$store.getters.idPersonaje.status == 'unknown'">
+                            Staus: {{this.$store.getters.idPersonaje.status}} ⁉️
+                        </p>
                         <p>Species: <span>{{this.$store.getters.idPersonaje.species}}</span></p>
                         <p>Created: <span>{{this.$store.getters.idPersonaje.created}}</span></p>
                     </b-card-text>

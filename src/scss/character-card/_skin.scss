@@ -33,6 +33,11 @@ $font-text: "Shadows Into Light";
 .contenedor__personajes .cards__container .card-container a{
     color: white;
 }
+.contenedor__personajes .cards__container .card-container:hover{
+    -webkit-box-shadow: 0px 0px 15px 5px $color-border; 
+    box-shadow: 0px 0px 15px 5px $color-border;
+}
+
 .contenedor__personajes .cards__container .card-container h2{
     font-size: 1.4rem;
     text-decoration: line-through black;
@@ -40,8 +45,9 @@ $font-text: "Shadows Into Light";
 .contenedor__personajes .cards__container .card-container h3{
     font-size: 1.2rem;
 }
-.contenedor__personajes.paginador{
+.contenedor__personajes .paginador{
     display: flex;
+    margin-top: 20px;
     justify-content: center;
 }
 

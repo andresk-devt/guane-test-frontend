@@ -10,18 +10,3 @@ export default {
 
 }
 </script>
-
-<style>
-.error_container{
-    width: 50%;
-    margin: auto;
-}
-.error_container h1{
-    color: white;
-    text-decoration: line-through;
-    font-weight: bold;
-}
-.error_container img{
-    width: 100%;
-}
-</style>
