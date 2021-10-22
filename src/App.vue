@@ -9,21 +9,5 @@
 </div>
 </template>
 
-<style>
-body {
-    background-image: url('https://www.xtrafondos.com/wallpapers/rick-y-morty-en-otra-dimension-8735.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-.header {
-    width: 100%;
-}
-
-.header img {
-    width: 300px;
-    margin: 25px;
-}
-</style>
+<style lang="scss" src="./scss/main.scss"></style>
+ 

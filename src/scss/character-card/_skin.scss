@@ -1,0 +1,56 @@
+//Skin de Character card
+
+$color-border: #8bf130;
+$font-title: "Nosifer";
+$font-text: "Shadows Into Light";
+
+.contenedor__personajes .card-container a{
+    text-decoration: none;
+}
+.contenedor__personajes hr{
+    color: white;
+}
+
+.contenedor__personajes .contenedor__title{
+    text-align: center;
+}
+.contenedor__personajes .contenedor__title h1{
+    display: inline-block;
+    position: relative;
+    font-family: $font-title;
+    color: white;
+}
+.contenedor__personajes .cards__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.contenedor__personajes .cards__container .card-container{
+    width: 49%;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+.contenedor__personajes .cards__container .card-container a{
+    color: white;
+}
+.contenedor__personajes .cards__container .card-container h2{
+    font-size: 1.4rem;
+    text-decoration: line-through black;
+}
+.contenedor__personajes .cards__container .card-container h3{
+    font-size: 1.2rem;
+}
+.contenedor__personajes.paginador{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .card-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor__personajes .cards__container .card-container{
+        width: 100%;
+    }
+}

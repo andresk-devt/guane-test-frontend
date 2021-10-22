@@ -1,0 +1,25 @@
+//Importamos los modulos
+
+//Card
+@import 'card/skin';
+@import 'character-card/skin';
+
+//Importamos unas fuentes que usamos en el aplicativo.
+@import url("https://fonts.googleapis.com/css2?family=Nosifer&family=Shadows+Into+Light&display=swap");
+//Estilos base del aplicativo.
+body {
+    background-image: url('https://www.xtrafondos.com/wallpapers/rick-y-morty-en-otra-dimension-8735.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.header {
+    width: 100%;
+}
+
+.header img {
+    width: 300px;
+    margin: 25px;
+}

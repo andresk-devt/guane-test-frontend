@@ -1,0 +1,46 @@
+//Skin de la card
+
+$border-color: #8bf130;
+$color: white;
+
+@mixin text-style{
+    color: black;
+    font-family: 'Shadows Into Light';
+    font-weight: bold;
+    -webkit-text-stroke: .5px $border-color;
+}
+
+#card {
+    width: 100%;
+    text-align: center;
+}
+#card .button{
+    text-align: center;
+}
+#card .title{
+    margin: 20px auto;
+    display: inline-block;
+    position: relative;
+    font-family: 'Nosifer';
+    color: $color;
+}
+#card .card__container-character{
+    background-color: rgba(0, 0, 0, .7);
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.493);
+    outline: 1px solid $border-color;
+}
+#card .card__container-character .card__container-imagen img{
+    width: 100%;
+    padding: 10px;
+    object-fit: cover;
+}
+#card .card__container-character .card__container-texto{
+    font-size: 1.5rem;
+    @include text-style
+}
+
