@@ -1,144 +1,169 @@
 <template>
-<div class="card_container">
-    <router-link to="`/personaje/${item.id}`">
-        <div class="card" v-for="item in personajes" :key="item.id">
-            <img :src="item.image" alt="Imagen del personaje" class="card__img">
-            <div class="card__information">
-                <h2 class="card__information-title">
-                    {{item.name}}
-                </h2>
-                <div class="card__information-secondary">
-                    <p class="card__information-status">
-                        Status: {{item.status}}
-                    </p>
-                    <p class="card__information-gender">
-                        Gender: {{item.gender}}
-                    </p>
-                    <p class="card__information-species">
-                        Species: {{item.species}}
-                    </p>
-                </div>
-            </div>
+    <div id="api" class="row container">
+        <div class="title" >
+            <h1 class="title-h1">Characters</h1>
         </div>
-    </router-link>
-</div>
+            <b-card no-body class="overflow-hidden" style="max-width: 540px;" v-for="item in personajes" :key="item.id">
+                <router-link :to="`/personaje/${item.id}`">
+                    <b-row no-gutters>
+                        <b-col md="6">
+                            <b-card-img :src="item.image" alt="Image" class="rounded-0"></b-card-img>
+                        </b-col>
+                        <b-col md="6">
+                            <b-card-body>
+                                <b-card-text>
+                                    <h2>Name: {{item.name}}</h2>
+                                    <hr size="3px">
+                                    <h3>Status: {{item.status}}</h3>
+                                    <h3>Gender: {{item.gender}}</h3>
+                                    <h3>Species: {{item.species}}</h3>
+                                </b-card-text>
+                            </b-card-body>
+                        </b-col>
+                    </b-row>
+                </router-link>
+            </b-card>
+          <div class="paginador">
+            <b-pagination
+              @change="cambioPagina"
+              v-model="paginaActual"
+              :total-rows="totalPersonajes"
+              :per-page="personajesPagina"
+              aria-controls="my-table"
+            ></b-pagination>
+          </div>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            personajes: [],
-            totalPersonajes: 0,
-            paginaActual: 1,
-            personajesPagina: 20,
-        };
-    },
-    async created() {
-        await this.$store.dispatch("obtenerPersonajes", 1);
-        this.personajes = this.$store.getters.personajes.results;
-        this.totalPersonajes = this.$store.getters.personajes.info.count;
-    },
-    methods: {
-        async cambioPagina(pagina) {
-            await this.$store.dispatch("obtenerPersonajes", pagina);
-            this.personajes = this.$store.getters.personajes.results;
-        }
+  data() {
+    return {
+      personajes: [],
+      totalPersonajes: 0,
+      paginaActual: 1,
+      personajesPagina: 20,
+    };
+  },
+  async created() {
+    await this.$store.dispatch("obtenerPersonajes", 1);
+    this.personajes =  this.$store.getters.personajes.results; 
+    this.totalPersonajes = this.$store.getters.personajes.info.count;
+  },
+  methods:{
+    async cambioPagina(pagina){
+    await this.$store.dispatch("obtenerPersonajes", pagina);
+    this.personajes =  this.$store.getters.personajes.results;
     }
+  }
 };
 </script>
 
+
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Asap&family=Shadows+Into+Light&display=swap');
 
-.card_container a {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    text-decoration: none;
+$color-border: #8bf130;
+$font-title: "Nosifer";
+$font-text: "Shadows Into Light";
+
+
+@import url("https://fonts.googleapis.com/css2?family=Nosifer&family=Shadows+Into+Light&display=swap");
+
+
+a{
+  text-decoration: none;
 }
-
-.card {
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-    width: 40%;
-    min-width: 300px;
-    height: auto;
+hr{
+  color: white;
 }
-
-.card:hover {
-    outline: 1px solid rgb(106, 223, 91);
-    opacity: .9;
+.paginador{
+  display: flex;
+  justify-content: center;
 }
-
-.card .card__img {
-    width: 50%;
-    object-fit: cover;
+.title {
+  text-align: center;
 }
-
-.card .card__information {
-    width: 50%;
+.title-h1 {
+  display: inline-block;
+  position: relative;
+  font-family: $font-title;
+  color: white;
 }
-
-.card img {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+.title-h1::after,.title-h1::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 3px;
+  background: white;
+  top: 0.5em;
 }
-
-.card__information {
-    font-family: 'Asap', sans-serif;
-    font-size: 1.5rem;
+h1::before {
+  left: -220px;
 }
-
-.card__information .card__information-title {
-    color: white;
-    font-family: 'Shadows Into Light', cursive;
-    text-align: center;
-    -webkit-text-stroke: .8px rgb(106, 223, 91);
+h1::after {
+  right: -220px;
 }
-
-.card__information .card__information-secondary {
-    color: white;
-    font-size: 1.4rem;
-    -webkit-text-stroke: .3px black;
-    width: 80%;
-    margin: auto;
-    text-align: start;
-    overflow: hidden;
+img {
+  margin: 20px;
+  outline: 1.5px solid $color-border;
 }
-
-.card__information .card__information-secondary p {
-    white-space: nowrap;
-    overflow: hidden;
-    overflow-block: hidden;
+.container {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
 }
-</style>
-
-<style>
+@mixin card {
+  margin: 20px;
+  background: rgba(0, 0, 0, 0.698);
+  color: white;
+  border: 1px solid $color-border;
+  font-family: $font-text;
+}
+@mixin cardContent{
+  @include card;
+    h2 {
+      font-size: 28px;
+      font-weight: 900;
+      -webkit-text-stroke: 0.5px $color-border;
+      color: white;
+    }
+      h3 {
+        @extend h2;
+        font-size: 25px;
+        font-weight: 600;
+      }
+}
 /*
-.card__container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
+.overflow-hidden {
+  margin: 20px;
+  background: rgba(0, 0, 0, 0.698);
+  color: white;
+  border: 1px solid $color-border;
+  font-family: $font-text;
 
-.card .card__img {
-    border-bottom-left-radius: 25px;
-    border-top-left-radius: 25px;
-    height: 300px;
-    width: 300px;
-}
+    h2 {
+      font-size: 28px;
+      font-weight: 900;
+      -webkit-text-stroke: 0.5px $color-border;
+      color: white;
+    }
 
-.card__information {
-    font-family: 'Asap', sans-serif;
-}
+      h3 {
+        font-size: 25px;
+        font-weight: 600;
+        -webkit-text-stroke: 0.3px $color-border;
+        color: white;
+      }
+      
 
-.card__information-title {
-    font-size: 2.5rem;
 }
 */
+.overflow-hidden{
+  @include cardContent
+}
+.overflow-hidden:hover {
+  background: rgba(255, 255, 255, 0.171);
+  box-shadow: inset 0 0 20px $color-border;
+  border: none;
+}
 </style>
